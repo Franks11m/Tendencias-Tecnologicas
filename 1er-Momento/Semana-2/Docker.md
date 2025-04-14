@@ -18,10 +18,10 @@ NGINX se ejecuta por defecto en el puerto **80**, y al mapearlo con diferentes p
 
 A través del comando `docker cp`, se manipularon los archivos `index.html` dentro del contenedor, lo que permite editar el contenido web sin modificar directamente la imagen base.
 > **Figura 1-1.** Logotipo de Docker.
- <img src="photos/1_1HXCJCOpzKdmQI33ZrEIlg.png" alt="drawing" width="500"/>
+ <img src="Tools/Photos/1er-Semana-2/images.png" alt="drawing" width="500"/>
 
 > **Figura 1-2**: Diagrama de contenedores desplegados con NGINX  
- <img src="photos/1_1HXCJCOpzKdmQI33ZrEIlg.png" alt="drawing" width="500"/>
+ <img src="Tools/Photos/1er-Semana-2/s2-servidores ngx-tarea.png" alt="drawing" width="500"/>
 
  
 ## 4. Conocimientos previos
