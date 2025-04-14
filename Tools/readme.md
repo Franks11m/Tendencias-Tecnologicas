@@ -1,0 +1,1 @@
+## Capturas de pantalla de cada Informe y Practica desarrollada
