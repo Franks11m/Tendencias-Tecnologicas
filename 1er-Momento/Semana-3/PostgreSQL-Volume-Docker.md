@@ -66,19 +66,20 @@ Para desarrollar correctamente esta práctica, se requiere que el estudiante ten
 - Guía video colocado en la plataforma virtual del Instituto https://drive.google.com/file/d/13lwPiwJhDIXRYozfBBqYqVWaXaVPA1pI/view
 
 ## 8. Procedimiento
+
 ### Parte 1: Base de datos sin volumen
 
-**Paso 1:**Crear un contenedor PostgreSQL sin volumen.
+**Paso 1:** Crear un contenedor PostgreSQL sin volumen.
 
 ```bash
 docker -v
 docker run --name server_db1 -e POSTGRES_PASSWORD=1234 -p 5435:5432 -d postgres
 ```
 > **Figura 8-1-1.** Comprobar si esta instalado docker y ejecutar comando
- <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 150643.png" alt="drawing" width="600"/>
+ <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 150643.png" alt="drawing" width="800"/>
  
 > **Figura 8-1-2.** Verificar si el contenedor esta ejecutandose
- <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 160929.png" alt="drawing" width="600"/>
+ <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 160929.png" alt="drawing" width="800"/>
 
  
 **Paso 2:** Conectar un administrador de base de datos DataGrip al contenedor server_db1
@@ -88,7 +89,7 @@ docker run --name server_db1 -e POSTGRES_PASSWORD=1234 -p 5435:5432 -d postgres
  contraseña: 1234
 ```
 > **Figura 8-2-1.** Revisar conexión 
- <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 160817.png" alt="drawing" width="600"/>
+ <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 160817.png" alt="drawing" width="500"/>
  
 **Paso 3:** Crear una base de datos test y dentro de ella una tabla customer.
 ```bash
@@ -96,7 +97,7 @@ CREATE DATABASE test;
 ```
 
 > **Figura 8-3-1.** Crear base de datos test en consola
- <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 161230.png" alt="drawing" width="600"/>
+ <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 161230.png" alt="drawing" width="800"/>
 
  ```bash
 CREATE TABLE customer (
@@ -107,14 +108,14 @@ CREATE TABLE customer (
 ```
 
 > **Figura 8-4-1.** Creamos la tabla **customer**
- <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 162802.png" alt="drawing" width="600"/>
+ <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 162802.png" alt="drawing" width="800"/>
  
 **Paso 4:**   Insertar un registro de prueba.
 ```bash
 INSERT INTO customer (fullname, status) VALUES ('Franks González', true);
 ```
 > **Figura 8-4-1.** 
- <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 162857.png" alt="drawing" width="600"/>
+ <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 162857.png" alt="drawing" width="800"/>
 
 **Paso 5:** Verificar que los datos existen.
 ```bash
@@ -167,7 +168,7 @@ docker run --name server_db2 -e POSTGRES_PASSWORD=1234 -p 5436:5432 -v pgdata:/v
  contraseña: 1234
 ```
 > **Figura 8-9-1.** Revisar conexión
- <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 165042.png" alt="drawing" width="800"/>
+ <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 165042.png" alt="drawing" width="500"/>
  
 
 **Paso 3:**  Repetir el proceso: crear la base test, la tabla customer, y registrar datos.
