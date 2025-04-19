@@ -17,9 +17,9 @@ Por otro lado, **PostgreSQL** es un sistema de gestión de bases de datos relaci
 Para evitar esa pérdida, Docker permite el uso de **volúmenes**, que son espacios de almacenamiento persistente. Al vincular un volumen a un contenedor, se puede asegurar que los datos permanezcan disponibles incluso si el contenedor se detiene o se borra.
 
 <div align="center">
-  <img src="https://miro.medium.com/v2/resize:fit:800/format:webp/1*zgn96VYrjCqW-iPGLuD49Q.png" width="800" />
+  <img src="./../../Tools/Photos/1er-Semana-3/1_Ub4SunP72TpHuqyQuwCPWw.jpg" width="500" />
   <br>
-  Figura 3-1. Persistencia de datos con volúmenes Docker.
+  Figura 1. Persistencia de datos con volúmenes Docker.
 </div>
 
 Esta práctica está dividida en dos partes:
@@ -32,121 +32,201 @@ Esta práctica está dividida en dos partes:
 
 Para desarrollar correctamente esta práctica, se requiere que el estudiante tenga conocimiento de:
 
-- Uso de comandos básicos en terminal Linux
-- Instalación y uso de Docker
-- Manipulación de archivos en Linux
-- Edición de archivos HTML con editores como `nano` o `vi`
-- Comprensión básica de puertos y redes en servicios web
+- Comandos en terminal o consola (`docker`, `ps`, `rm`, etc.)
+- Conexión a bases de datos usando herramientas como DataGrip o pgAdmin
+- Conceptos básicos de bases de datos relacionales (crear bases, tablas, registros)
+- Uso de Docker y sus conceptos principales: imágenes, contenedores, volúmenes
 
 
 ## 5. Objetivos a alcanzar
 
-- Implementar dos contenedores con NGINX que expongan diferentes puertos
-- Personalizar el contenido del archivo `index.html` dentro de cada contenedor
-- Comprender el uso de Docker para desplegar servidores web rápidamente
+- Implementar contenedores Docker con PostgreSQL.
+- Conectar herramientas de administración a bases de datos dentro de contenedores.
+- Comprobar el comportamiento de los datos sin volumen.
+- Asociar un volumen al contenedor y verificar la persistencia.
+- Documentar el proceso con evidencia.
 
 
 
 ## 6. Equipo necesario
 
-- Computador con Ubuntu 22.04 (en WSL)
-- Docker v26.1.3
-- Acceso a terminal con permisos sudo
-- Editor de texto (`nano`, `vi`, etc.)
-- Navegador web para visualizar los servidores
+- Computador con Windows 10 o superior (o Linux/Mac equivalente).
+- Docker Desktop instalado (v20.10 o superior).
+- Cliente de base de datos como DataGrip, pgAdmin o DBeaver.
+- Conexión a internet.
+- Terminal o consola habilitada.
 
 
 ## 7. Material de apoyo
 
 - [Documentación oficial de Docker](https://docs.docker.com/)
+- [Documentación de PostgreSQL](https://www.postgresql.org/docs/)
 - [Guía de Informe](https://github.com/maguaman2/informe-tendencias)
 - Guía de comandos básicos de Linux.
-- Guía video colocado en la plataforma virtual del Instituto https://drive.google.com/file/d/15wFqPb-kXV2pF-hzqubjN56eNScP-OB4/view
+- Guía video colocado en la plataforma virtual del Instituto https://drive.google.com/file/d/13lwPiwJhDIXRYozfBBqYqVWaXaVPA1pI/view
 
 ## 8. Procedimiento
+### Parte 1: Base de datos sin volumen
 
-**Paso 1:** Instalar Docker en el terminal
+**Paso 1:**Crear un contenedor PostgreSQL sin volumen.
 
 ```bash
 docker -v
+docker run --name server_db1 -e POSTGRES_PASSWORD=1234 -p 5435:5432 -d postgres
 ```
-> **Figura 8-1-1.** Verificación del Docker en Ubuntu.
- <img src="../../Tools/Photos/1er-Semana-2/Captura de pantalla 2025-04-13 223628.png" alt="drawing" width="600"/>
+> **Figura 8-1-1.** Comprobar si esta instalado docker y ejecutar comando
+ <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 150643.png" alt="drawing" width="600"/>
  
-**Paso 2:** Probar si el Docker funciona correctamente  
-```bash
-docker run hello-world
-```
-> **Figura 8-2-1.** Docker funcionando.
- <img src="../../Tools/Photos/1er-Semana-2/Captura de pantalla 2025-04-13 223645.png" alt="drawing" width="600"/>
- 
-**Paso 3:** Crear el primer contenedor.
-```bash
-docker run -d --name nginx1 -p 8089:80 nginx
-```
-**Paso 4:**  Crear el segundo contenedor.
-```bash
-docker run -d --name nginx2 -p 8090:80 nginx
-```
-> **Figura 8-4-1.** Contenedores creados.
- <img src="../../Tools/Photos/1er-Semana-2/Captura de pantalla 2025-04-13 224123.png" alt="drawing" width="600"/>
+> **Figura 8-1-2.** Verificar si el contenedor esta ejecutandose
+ <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 160929.png" alt="drawing" width="600"/>
 
-**Paso 5:** Copiar archivo desde el contenedor nginx1.
+ 
+**Paso 2:** Conectar un administrador de base de datos DataGrip al contenedor server_db1
 ```bash
-docker cp nginx1:/usr/share/nginx/html/index.html ./index1.html
+ localhost:  5435
+ usuario:    postgres
+ contraseña: 1234
+```
+> **Figura 8-2-1.** Revisar conexión 
+ <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 160817.png" alt="drawing" width="600"/>
+ 
+**Paso 3:** Crear una base de datos test y dentro de ella una tabla customer.
+```bash
+CREATE DATABASE test;
+```
+
+> **Figura 8-3-1.** Crear base de datos test en consola
+ <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 161230.png" alt="drawing" width="600"/>
+
+ ```bash
+CREATE TABLE customer (
+  id SERIAL PRIMARY KEY,
+  fullname VARCHAR(100),
+  status BOOLEAN
+);
+```
+
+> **Figura 8-4-1.** Creamos la tabla **customer**
+ <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 162802.png" alt="drawing" width="600"/>
+ 
+**Paso 4:**   Insertar un registro de prueba.
+```bash
+INSERT INTO customer (fullname, status) VALUES ('Franks González', true);
+```
+> **Figura 8-4-1.** 
+ <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 162857.png" alt="drawing" width="600"/>
+
+**Paso 5:** Verificar que los datos existen.
+```bash
+SELECT * FROM customer;
 ```
 > **Figura 8-5-1.** 
- <img src="../../Tools/Photos/1er-Semana-2/Captura de pantalla 2025-04-13 224242.png" alt="drawing" width="800"/>
+ <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 162928.png" alt="drawing" width="800"/>
 
-**Paso 6:**  Instalar nano en la terminal de Ubuntu
+**Paso 6:**  Eliminar contenedor
 ```bash
-sudo apt install nano
+docker rm 565
 ```
 > **Figura 8-6-1.** 
- <img src="../../Tools/Photos/1er-Semana-2/Captura de pantalla 2025-04-13 224459.png" alt="drawing" width="800"/>
+ <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 163215.png" alt="drawing" width="800"/>
 
-**Paso 7:**  Editar el archivo index1.html.
+**Paso 7:**  Volver a crear el contenedor con el mismo nombre, y verificar que la base de datos test ya no existe.
 ```bash
-nano index1.html
+docker run --name server_db1 -e POSTGRES_PASSWORD=1234 -p 5435:5432 -d postgres
 ```
-> **Figura 8-7-1.** Editar con información del Instituto
- <img src="../../Tools/Photos/1er-Semana-2/Captura de pantalla 2025-04-13 224915.png" alt="drawing" width="800"/>
+> **Figura 8-7-1.** Verificar si el contenedor se creo con otro ID 
+ <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 163352.png" alt="drawing" width="800"/>
 
-**Paso 8:** Volver a copiar el archivo editado al contenedor
+> **Figura 8-7-2.** Ver si los datos no se conservaron
+ <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 163632.png" alt="drawing" width="800"/>
+
+
+
+### Parte 2: Base de datos con volumen
+
+**Paso 1:** Crear un volumen.
 ```bash
-docker cp index1.html nginx1:/usr/share/nginx/html/index.html
+docker volume create pgdata
 ```
-> **Figura 8-8-1.** Editar con información del Instituto
- <img src="../../Tools/Photos/1er-Semana-2/Captura de pantalla 2025-04-13 225953.png" alt="drawing" width="800"/>
+> **Figura 8-1-1.** Editar con información del Instituto
+ <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 164603.png" alt="drawing" width="800"/>
 
-**Paso 9:**  Repetir el proceso para nginx2
+> **Figura 8-1-2.** Crear un contenedor usando el volumen.
 ```bash
-docker cp nginx2:/usr/share/nginx/html/index.html ./index2.html
-nano index2.html
-docker cp index2.html nginx2:/usr/share/nginx/html/index.html
-
+docker run --name server_db2 -e POSTGRES_PASSWORD=1234 -p 5436:5432 -v pgdata:/var/lib/postgresql/data -d postgres
 ```
-> **Figura 8-9-1.** Copiar archivo desde el contenedor nginx2
- <img src="../../Tools/Photos/1er-Semana-2/Captura de pantalla 2025-04-13 230205.png" alt="drawing" width="800"/>
- 
-> **Figura 8-9-2.** Editar el archivo index2.html "Se personaliza con información personal del estudiante"
- <img src="../../Tools/Photos/1er-Semana-2/Captura de pantalla 2025-04-13 230722.png" alt="drawing" width="800"/>
- 
-> **Figura 8-9-3.**Volver a copiar el archivo editado al contenedor
- <img src="../../Tools/Photos/1er-Semana-2/Captura de pantalla 2025-04-13 230712.png" alt="drawing" width="800"/>
- 
+ <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 164804.png" alt="drawing" width="800"/>
 
-**Paso 10:**  Verificación de Servidores Web
+> **Figura 8-1-3.** Verificar el contenedor en Docker
+ <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 164815.png" alt="drawing" width="800"/>
+
+**Paso 2:**  Conectar un administrador de base de datos DataGrip al contenedor server_db2
 ```bash
-Acceder a http://localhost:8089 para el primer servidor
-Acceder a http://localhost:8090 para el segundo servidor
+ localhost:  5436
+ usuario:    postgres
+ contraseña: 1234
 ```
-> **Figura 8-10-1.** Primer servidor 
- <img src="../../Tools/Photos/1er-Semana-2/Captura de pantalla 2025-04-13 232414.png" alt="drawing" width="800"/>
+> **Figura 8-9-1.** Revisar conexión
+ <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 165042.png" alt="drawing" width="800"/>
  
-> **Figura 8-10-2.** Segundo servidor 
- <img src="../../Tools/Photos/1er-Semana-2/Captura de pantalla 2025-04-13 232439.png" alt="drawing" width="800"/>
 
+**Paso 3:**  Repetir el proceso: crear la base test, la tabla customer, y registrar datos.
+```bash
+CREATE DATABASE test;
+```
+> **Figura 8-3-1.** Crear base de datos test
+ <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 165234.png" alt="drawing" width="800"/>
+ 
+```bash
+CREATE TABLE customer (
+  id SERIAL PRIMARY KEY,
+  fullname VARCHAR(100),
+  status BOOLEAN
+);
+```
+
+> **Figura 8-3-2.** Crear tabla customer en base de datos test
+ <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 165455.png" alt="drawing" width="800"/>
+ 
+```bash
+INSERT INTO customer (fullname, status) VALUES ('Samantha Murillo', true);
+```
+
+> **Figura 8-3-3.** Registrar datos a la tabla
+ <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 165540.png" alt="drawing" width="800"/>
+ 
+ ```bash
+SELECT * FROM customer;
+```
+
+> **Figura 8-3-4.** Ver datos guardados
+ <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 165638.png" alt="drawing" width="800"/>
+
+
+**Paso 4:** Eliminar contenedor server_db2
+```bash
+docker stop d9a  =  Detener
+docker ps -a     =  Revisar
+docker rm d9a    =  Eliminar
+```
+> **Figura 8-4-1.** Detener, revisar y eliminar contenedor server_db2
+ <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 170136.png" alt="drawing" width="800"/>
+
+ > **Figura 8-4-1.** Verificar conexión que este perdida
+ <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 170203.png" alt="drawing" width="800"/>
+
+
+**Paso 5:** Volver a crear el contenedor con el mismo volumen
+```bash
+docker run --name server_db2 -e POSTGRES_PASSWORD=1234 -p 5436:5432 -v pgdata:/var/lib/postgresql/data -d postgres
+```
+> **Figura 8-5-1.** Editar con información del Instituto
+ <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 170203.png" alt="drawing" width="800"/>
+
+**Paso 5:** Verificar que los datos persisten.
+
+> **Figura 8-5-1.** Ver  la tabla y su registró
+ <img src="./../../Tools/Photos/1er-Semana-3/Captura de pantalla 2025-04-19 170420.png" alt="drawing" width="800"/>
 
 ## 9. Resultados esperados
 
