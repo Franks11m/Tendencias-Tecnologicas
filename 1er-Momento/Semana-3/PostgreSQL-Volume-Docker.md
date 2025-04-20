@@ -231,25 +231,18 @@ docker run --name server_db2 -e POSTGRES_PASSWORD=1234 -p 5436:5432 -v pgdata:/v
 
 ## 9. Resultados esperados
 
-
-Al finalizar la práctica, se espera que el estudiante haya logrado implementar correctamente un **servidor web utilizando contenedores Docker con la imagen oficial de NGINX**. Se debe haber cumplido con los siguientes objetivos:
-
-- **Implementar contenedores con NGINX:** Se logró desplegar dos contenedores de NGINX, exponiendo sus puertos correctamente para acceder desde el navegador web local a través de `localhost:8089` y `localhost:8090`.
-  
-- **Manipular archivos de configuración:** Se realizó la extracción del archivo `index.html` desde el primer contenedor `nginx1`, se modificó su contenido localmente, y se volvió a utilizar como página web personalizada en el segundo contenedor `nginx2`.
-
-- **Validación de la configuración:** Al ingresar a los puertos mapeados en el navegador, se visualizó la página original de NGINX desde el primer contenedor y la página modificada desde el segundo contenedor, lo que demuestra la correcta manipulación del contenido del servidor web.
-
-
-Estos resultados confirman que se cumplió con éxito el despliegue de servidores web en contenedores Docker, así como la edición de sus archivos internos.
-
+- Se implementaron contenedores PostgreSQL correctamente con y sin volúmenes.
+- Se logró la conexión desde DataGrip a los contenedores utilizando las credenciales del entorno.
+- Sin volumen, los datos insertados en la base `test` se perdieron al eliminar el contenedor.
+- Con volumen (`pgdata`), los datos persistieron incluso después de eliminar y recrear el contenedor.
+- Se documentó todo el proceso con capturas de pantalla y se redactó el informe siguiendo la plantilla.
 
   ## 🔊 Audio Explicativo de la practica.
-https://drive.google.com/file/d/1znu-cUfQQpujFQ9_oJb6P0acfJBsstPN/view?usp=sharing
+https://drive.google.com/file/d/109Zl1GZlASSyH5Dj9RvkdaQh_P1ynPc0/view?usp=sharing
 
 ## 10. Bibliografía
 
+- PostgreSQL: documentation. (s. f.). The PostgreSQL Global Development Group. https://www.postgresql.org/docs/
 - Play with Docker. (s. f.). https://labs.play-with-docker.com/
-- nano – Documentation. (s. f.). https://www.nano-editor.org/docs.php
 - Official Ubuntu Documentation. (s. f.). https://help.ubuntu.com/
 - Microsoft. (s.f.). *Windows Subsystem for Linux Documentation*. Recuperado de [https://learn.microsoft.com/en-us/windows/wsl/](https://learn.microsoft.com/en-us/windows/wsl/)
