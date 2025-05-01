@@ -158,7 +158,7 @@ docker run -d --name wordpress-site --network wordpress-net -e WORDPRESS_DB_HOST
  <img src="./../../Tools/Photos/1er-Semana-5/Captura de pantalla 2025-04-30 154111.png" alt="drawing" width="800"/>
  <img src="./../../Tools/Photos/1er-Semana-5/Captura de pantalla 2025-04-30 154124.png" alt="drawing" width="800"/>
 
-> **Figura 8-5-2.**Instalación inicial de WordPress (localhost:8000)
+> **Figura 8-5-2.** Instalación inicial de WordPress (localhost:8000)
  <img src="./../../Tools/Photos/1er-Semana-5/Captura de pantalla 2025-04-30 154206.png" alt="drawing" width="800"/>
  <img src="./../../Tools/Photos/1er-Semana-5/Captura de pantalla 2025-04-30 154452.png" alt="drawing" width="800"/>
  <img src="./../../Tools/Photos/1er-Semana-5/Captura de pantalla 2025-04-30 154518.png" alt="drawing" width="800"/>
@@ -174,7 +174,7 @@ Al finalizar la práctica, se obtuvieron los siguientes resultados:
 - Comunicación exitosa entre los contenedores WordPress, phpMyAdmin y MySQL a través de la red personalizada `wordpress-net`.
   
   ## 🔊 Audio Explicativo de la practica.
-https://drive.google.com/file/d/12Gb5MJWE1n1QDOJSKrgBs-D5jndHYhR8/view?usp=sharing
+https://drive.google.com/file/d/13CTEiPcFf1cGNNUiTer7ho2mKyDdHjnN/view?usp=sharing
 
 ## 10. Bibliografía
 
