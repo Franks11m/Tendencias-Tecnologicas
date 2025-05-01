@@ -32,7 +32,7 @@ También se hizo uso de variables de entorno para automatizar configuraciones, l
 <div align="center">
   <img src="./../../Tools/Photos/1er-Semana-5/Captura de pantalla 2025-04-30 164952.png" width="650" />
   <br>
-  Figura 1. Diagrama de los contenedores con los puertos utilizados.
+  Figura 2. Diagrama de los contenedores con los puertos utilizados.
 </div>
 
  
