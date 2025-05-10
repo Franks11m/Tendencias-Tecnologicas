@@ -1,29 +1,23 @@
-
-# Práctica: Implementación de un servidor WordPress con Docker
+# Práctica Servidor Web
 
 
 ## 1. Título  
-**Implementación de un entorno web WordPress usando contenedores Docker**
+**Implementación de un entorno WordPress con MySQL y phpMyAdmin utilizando Docker Compose**
 
 ## 2. Tiempo de duración  
 **120 minutos (2 horas)**
 
 ## 3. Fundamentos
 
-Docker es una tecnología que permite la creación y ejecución de aplicaciones dentro de contenedores. Estos contenedores incluyen todos los componentes necesarios para ejecutar un servicio: sistema de archivos, bibliotecas, configuraciones y código de la aplicación. A través de esta tecnología, se puede garantizar la portabilidad y el aislamiento de los servicios sin necesidad de configurar entornos complejos.
+En esta práctica se explora el uso de Docker Compose para implementar un entorno de desarrollo compuesto por tres servicios principales: WordPress, MySQL y phpMyAdmin. Cada uno de estos servicios se ejecuta en su propio contenedor, lo que permite una gestión modular, reutilizable y aislada de los componentes de la aplicación web.
 
-En la presente práctica, se implementó un entorno de publicación web basado en WordPress, compuesto por tres contenedores:
+**Docker** es una plataforma que permite desarrollar, enviar y ejecutar aplicaciones dentro de contenedores. Un contenedor es una unidad estándar de software que empaqueta el código y todas sus dependencias para que la aplicación se ejecute de manera rápida y confiable en diferentes entornos. Por su parte, **Docker Compose** es una herramienta que permite definir y ejecutar aplicaciones multicontenedor usando un archivo YAML.
 
-- **MySQL**: motor de base de datos que almacena la información del sitio web.
+**WordPress** es un sistema de gestión de contenido (CMS) de código abierto que facilita la creación y administración de sitios web. **MySQL** es un sistema de gestión de bases de datos relacional muy utilizado en aplicaciones web, y **phpMyAdmin** es una herramienta de administración para MySQL a través de una interfaz web amigable.
 
-- **phpMyAdmin**: interfaz gráfica que permite la administración de bases de datos.
+Mediante el archivo `docker-compose.yml`, se definen los servicios, las redes que los conectan, los volúmenes para persistencia de datos y las variables de entorno necesarias. Además, se asignan puertos específicos para acceder a WordPress (puerto 8080) y phpMyAdmin (puerto 8081) desde el navegador.
 
-- **WordPress**: sistema de gestión de contenidos (CMS) que permite construir y administrar sitios web de forma intuitiva.
-
-Además, se utilizaron conceptos fundamentales como la creación de una red personalizada para permitir la comunicación entre contenedores, y la configuración de un volumen persistente, que evita la pérdida de datos al detener o eliminar los contenedores.
-
-También se hizo uso de variables de entorno para automatizar configuraciones, lo cual permite desplegar servicios listos para funcionar con un solo comando. Esta práctica refuerza habilidades esenciales en redes, administración de sistemas y virtualización ligera.
-
+A continuación se presenta un esquema representativo del entorno de contenedores utilizado:
 <div align="center">
   <img src="./../../Tools/Photos/1er-Semana-5/image-removebg-preview (8).png" width="500" />
   <br>
