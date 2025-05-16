@@ -23,13 +23,14 @@ Además, se debe comprender el flujo de construcción de una imagen Docker:
 3. Uso de `docker run` para lanzar un contenedor.
 
 Todo esto se realiza desde la terminal o desde entornos como **Visual Studio Code**, con extensiones que permiten integrarse fácilmente con Docker Desktop.
-
 ---
+
 <div align="center">
-  <img src="./../../Tools/Photos/2do-Semana-6/Captura de pantalla 2025-05-08 225953.png" width="800" />
+  <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 111057.png" width="800" />
   <br>
-  Figura 1. Representación de Docker.
+  Figura 1. Componentes del Docker.
 </div>
+
 
  
 ## 4. Conocimientos previos
@@ -75,18 +76,19 @@ Todo esto se realiza desde la terminal o desde entornos como **Visual Studio Cod
 
 ```bash
 docker info
-
-
 ```
 
- **Paso 2:** Clonar el proyecto frontend
+ **Paso 2:** Clonar el proyecto frontend y backend
 
 ```bash
-gIT HUB DESCKTOP
+GIT-HUB DESCKTOP
 ```
 
 > **Figura 8-2-1.**
- <img src="./../../Tools/Photos/2do-Semana-6/Captura de pantalla 2025-05-08 221830.png" alt="drawing" width="800"/>
+ <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 101529.png" alt="drawing" width="800"/>
+ 
+> **Figura 8-2-2.**
+ <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 101445.png" alt="drawing" width="800"/>
 
  
 **Paso 3:** Crear el Dockerfile
@@ -117,36 +119,34 @@ CMD ["nginx", "-g", "daemon off;"]
 ```
 
 > **Figura 8-3-1.** 
- <img src="./../../Tools/Photos/2do-Semana-6/Captura de pantalla 2025-05-08 222420.png" alt="drawing" width="800"/>
+ <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 113338.png" alt="drawing" width="800"/>
  
-> **Figura 8-3-2.** 
- <img src="./../../Tools/Photos/2do-Semana-6/Captura de pantalla 2025-05-08 222401.png" alt="drawing" width="500"/>
-
 **Paso 4:**  Construir la imagen
 ```bash
 docker build -t suda-frontend .
 ```
 
 > **Figura 8-4-1.** 
- <img src="./../../Tools/Photos/2do-Semana-6/Captura de pantalla 2025-05-08 222547.png" alt="drawing" width="800"/>
+ <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 112637.png" alt="drawing" width="800"/>
 
 **Paso 5:** Ejecutar el contenedor
 ```bash
 docker run -d -p 80:80 suda-frontend
 ```
 > **Figura 8-5-1.** 
- <img src="./../../Tools/Photos/2do-Semana-6/Captura de pantalla 2025-05-08 232047.png" alt="drawing" width="800"/>
+ <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 112655.png" alt="drawing" width="800"/>
+
+> **Figura 8-5-2.** 
+ <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 113418.png" alt="drawing" width="800"/>
+
 
 **Paso 6:** Acceder desde el navegador
 ```bash
-docker run -d -p 3000:80 suda-frontend
 http://localhost:8080
 ```
-> **Figura 8-6-1.** 
- <img src="./../../Tools/Photos/2do-Semana-6/Captura de pantalla 2025-05-08 222721.png" alt="drawing" width="800"/>
  
-> **Figura 8-6-2.** 
- <img src="./../../Tools/Photos/2do-Semana-6/Captura de pantalla 2025-05-08 224536.png" alt="drawing" width="800"/>
+> **Figura 8-6-1.** 
+ <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 112723.png" alt="drawing" width="800"/>
 
 ## 9. Resultados esperados
 
