@@ -5,8 +5,7 @@
 **Automatización del despliegue de una aplicación backend con Docker y Docker Compose, incluyendo PostgreSQL y pgAdmin**
 
 ## 2. Tiempo de duración  
-**Aproximadamente 180 minutos (3 horas) fueron utilizados para completar la práctica, incluyendo configuración, construcción de imágenes y despliegue.
-**  
+**Aproximadamente 180 minutos (3 horas) fueron utilizados para completar la práctica, incluyendo configuración, construcción de imágenes y despliegue.**  
 
 ## 3. Fundamentos
 
@@ -18,10 +17,8 @@ La base de datos PostgreSQL es un sistema de gestión de bases de datos relacion
 
 La técnica de multi-stage builds en Docker permite optimizar la construcción de imágenes, reduciendo el tamaño final al separar las fases de compilación y ejecución. Esto mejora la eficiencia en la automatización y el despliegue continuo.
 
-![Diagrama básico de contenedores Docker](https://docs.docker.com/engine/images/engine-overview.svg)  
-
 <div align="center">
-  <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 111057.png" width="800" />
+  <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 005427.png" width="800" />
   <br>
   Figura 1.  Arquitectura básica de contenedores Docker y servicios.
 </div>
@@ -68,37 +65,79 @@ Para realizar esta práctica el estudiante necesita tener claro los siguientes t
 
 ## 8. Procedimiento  
 
-**Paso 1:** Configurar docker-compose.yml con servicios para PostgreSQL, pgAdmin y la aplicación backend.  
-> **Figura 8-3-1.** 
- <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 113338.png" alt="drawing" width="800"/>
- 
-**Paso 2:** Crear volúmenes y redes para asegurar persistencia y comunicación entre contenedores. 
-> **Figura 8-3-1.** 
- <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 113338.png" alt="drawing" width="800"/>
- 
-**Paso 3:** Construir la imagen Docker de la aplicación backend con Dockerfile (incluyendo multi-stage build para optimización).  
-> **Figura 8-3-1.** 
- <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 113338.png" alt="drawing" width="800"/>
- 
-**Paso 4:** Levantar los contenedores con `docker-compose up --build -d`.  
-> **Figura 8-3-1.** 
- <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 113338.png" alt="drawing" width="800"/>
- 
-**Paso 5:** Acceder a pgAdmin para configurar la conexión a PostgreSQL (host: `db`, puerto: `5432`, usuario: `postgres`, contraseña: `S3cr3t`).  
-> **Figura 8-3-1.** 
- <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 113338.png" alt="drawing" width="800"/>
- 
-**Paso 6:** Probar los endpoints expuestos por la API backend, por ejemplo, `http://localhost:8081/users` para listar usuarios.  
-> **Figura 8-3-1.** 
- <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 113338.png" alt="drawing" width="800"/>
- 
-**Paso 7:** Verificar los logs y estado de los contenedores para asegurar correcto funcionamiento.
-> **Figura 8-3-1.** 
- <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 113338.png" alt="drawing" width="800"/>
+## 8. Procedimiento
+
+**Paso 1:** Clonar el repositorio base desde GitHub.
+> **Figura 8-2-1.**
+ <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-01 230732.png" alt="drawing" width="800"/>
+
+**Paso 2:** Acceder al directorio del proyecto clonado.
+> **Figura 8-2-1.**
+ <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-01 230732.png" alt="drawing" width="800"/>
+
+
+**Paso 3:** Crear y configurar el archivo `docker-compose.yml` con los servicios necesarios.
+> **Figura 8-2-1.**
+ <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-01 233240.png" alt="drawing" width="800"/>
+
+
+**Paso 4:** Definir las variables de entorno en un archivo `.env`.
+> **Figura 8-2-1.**
+ <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-01 232921.png" alt="drawing" width="800"/>
  
 
-![Diagrama de servicios y contenedores](https://user-images.githubusercontent.com/placeholder/docker-compose-diagram.png)  
-*Figura 8-1. Diagrama de servicios desplegados con Docker Compose.*
+**Paso 5:** Crear un `Dockerfile` con estrategia de construcción multi-stage para la aplicación backend.
+> **Figura 8-2-1.**
+ <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-01 235132.png" alt="drawing" width="800"/>
+ 
+
+**Paso 6:** Construir e iniciar los contenedores usando Docker Compose.
+> **Figura 8-2-1.**
+ <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-01 235647.png" alt="drawing" width="800"/>
+ 
+> **Figura 8-2-2.**
+ <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 000423.png" alt="drawing" width="800"/>
+
+**Paso 7:** Acceder a pgAdmin desde el navegador y crear un nuevo servidor con los datos de conexión.
+> **Figura 8-2-1.**
+ <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 005716.png" alt="drawing" width="800"/>
+ 
+> **Figura 8-2-1.**
+ <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 001104.png" alt="drawing" width="800"/>
+ 
+> **Figura 8-2-2.**
+ <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 001125.png" alt="drawing" width="800"/>
+ 
+> **Figura 8-2-2.**
+ <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 001135.png" alt="drawing" width="800"/>
+
+> **Figura 8-2-2.**
+ <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 001250.png" alt="drawing" width="800"/>
+ 
+**Paso 8:** Verificar la conexión de pgAdmin a PostgreSQL.
+> **Figura 8-2-1.**
+ <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 001831.png" alt="drawing" width="800"/>
+
+
+**Paso 9:** Comprobar que la aplicación backend se conecta correctamente a la base de datos.
+> **Figura 8-2-1.**
+ <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 101529.png" alt="drawing" width="800"/>
+ 
+> **Figura 8-2-2.**
+ <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 101445.png" alt="drawing" width="800"/>
+
+**Paso 10:** Crear y configurar el archivo `CorsConfig.kt` para habilitar CORS en el backend.
+> **Figura 8-2-1.**
+ <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 001935.png" alt="drawing" width="800"/>
+ 
+
+**Paso 11:** Probar el endpoint `/users` desde el navegador o herramienta de prueba de APIs.
+> **Figura 8-2-1.**
+ <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 004720.png" alt="drawing" width="800"/>
+
+> **Figura 8-2-1.**
+  <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 101445.png" alt="drawing" width="800"/>
+
 
 ## 9. Resultados esperados  
 
@@ -110,6 +149,7 @@ Al finalizar la práctica, se espera que los siguientes resultados sean evidente
 - Imagen Docker optimizada y contenedores fácilmente replicables.  
 
 Ejemplo de respuesta en navegador para `http://localhost:8081/users`:
+> **Figura 8-2-2.**
 
 ```json
 [
