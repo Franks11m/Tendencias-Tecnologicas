@@ -65,10 +65,8 @@ Para realizar esta práctica el estudiante necesita tener claro los siguientes t
 
 ## 8. Procedimiento  
 
-## 8. Procedimiento
-
 **Paso 1:** Clonar el repositorio base desde GitHub.
-> **Figura 8-2-1.**
+> **Figura 8-1-1.**
  <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-01 230732.png" alt="drawing" width="800"/>
 
 **Paso 2:** Acceder al directorio del proyecto clonado.
@@ -77,61 +75,61 @@ Para realizar esta práctica el estudiante necesita tener claro los siguientes t
 
 
 **Paso 3:** Crear y configurar el archivo `docker-compose.yml` con los servicios necesarios.
-> **Figura 8-2-1.**
+> **Figura 8-3-1.**
  <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-01 233240.png" alt="drawing" width="800"/>
 
 
 **Paso 4:** Definir las variables de entorno en un archivo `.env`.
-> **Figura 8-2-1.**
+> **Figura 8-4-1.**
  <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-01 232921.png" alt="drawing" width="800"/>
  
 
 **Paso 5:** Crear un `Dockerfile` con estrategia de construcción multi-stage para la aplicación backend.
-> **Figura 8-2-1.**
+> **Figura 8-5-1.**
  <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-01 235132.png" alt="drawing" width="800"/>
  
 
 **Paso 6:** Construir e iniciar los contenedores usando Docker Compose.
-> **Figura 8-2-1.**
+> **Figura 8-6-1.**
  <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-01 235647.png" alt="drawing" width="800"/>
  
-> **Figura 8-2-2.**
+> **Figura 8-6-2.**
  <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 000423.png" alt="drawing" width="800"/>
 
 **Paso 7:** Acceder a pgAdmin desde el navegador y crear un nuevo servidor con los datos de conexión.
-> **Figura 8-2-1.**
+> **Figura 8-7-1.**
  <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 005716.png" alt="drawing" width="800"/>
  
-> **Figura 8-2-1.**
+> **Figura 8-7-2.**
  <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 001104.png" alt="drawing" width="800"/>
  
-> **Figura 8-2-2.**
+> **Figura 8-7-3.**
  <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 001125.png" alt="drawing" width="800"/>
  
-> **Figura 8-2-2.**
+> **Figura 8-7-4.**
  <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 001135.png" alt="drawing" width="800"/>
  
 **Paso 8:** Verificar la conexión de pgAdmin a PostgreSQL.
-> **Figura 8-2-1.**
+> **Figura 8-8-1.**
  <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 001831.png" alt="drawing" width="800"/>
 
 
 **Paso 9:** Comprobar que la aplicación backend se conecta correctamente a la base de datos.
-> **Figura 8-2-1.**
+> **Figura 9-9-1.**
  <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 001250.png" alt="drawing" width="800"/>
  
 
 **Paso 10:** Crear y configurar el archivo `CorsConfig.kt` para habilitar CORS en el backend.
-> **Figura 8-2-1.**
+> **Figura 8-10-1.**
  <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 001935.png" alt="drawing" width="800"/>
  
 
 **Paso 11:** Probar el endpoint `/users` desde el navegador o herramienta de prueba de APIs.
-> **Figura 8-2-1.**
+> **Figura 8-11-1.**
  <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 004720.png" alt="drawing" width="800"/>
 
-> **Figura 8-2-1.**
-  <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 101445.png" alt="drawing" width="800"/>
+> **Figura 8-11-2.**
+  <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 012126.png" alt="drawing" width="800"/>
 
 
 ## 9. Resultados esperados  
@@ -144,7 +142,6 @@ Al finalizar la práctica, se espera que los siguientes resultados sean evidente
 - Imagen Docker optimizada y contenedores fácilmente replicables.  
 
 Ejemplo de respuesta en navegador para `http://localhost:8081/users`:
-> **Figura 8-2-2.**
 
 ```json
 [
@@ -158,3 +155,13 @@ Ejemplo de respuesta en navegador para `http://localhost:8081/users`:
   },
   ...
 ]
+```
+
+  ## 🔊 Audio Explicativo de la practica.
+https://drive.google.com/file/d/10UL3iFNJ-jRgvvaaBtAelhagdXRXs97M/view?usp=sharing
+
+## 10. Bibliografía
+
+- Docker Inc. (s.f.). Docker Documentation. Recuperado de https://docs.docker.com/
+- González, F. (2023). Guía de implementación de entornos web con contenedores. Universidad Sudamericana.
+- dpage. (2024). phpMyAdmin documentation. Recuperado de https://www.phpmyadmin.net/docs/
