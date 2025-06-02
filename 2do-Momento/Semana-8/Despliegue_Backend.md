@@ -110,9 +110,6 @@ Para realizar esta práctica el estudiante necesita tener claro los siguientes t
  
 > **Figura 8-2-2.**
  <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 001135.png" alt="drawing" width="800"/>
-
-> **Figura 8-2-2.**
- <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 001250.png" alt="drawing" width="800"/>
  
 **Paso 8:** Verificar la conexión de pgAdmin a PostgreSQL.
 > **Figura 8-2-1.**
@@ -121,10 +118,8 @@ Para realizar esta práctica el estudiante necesita tener claro los siguientes t
 
 **Paso 9:** Comprobar que la aplicación backend se conecta correctamente a la base de datos.
 > **Figura 8-2-1.**
- <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 101529.png" alt="drawing" width="800"/>
+ <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 001250.png" alt="drawing" width="800"/>
  
-> **Figura 8-2-2.**
- <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 101445.png" alt="drawing" width="800"/>
 
 **Paso 10:** Crear y configurar el archivo `CorsConfig.kt` para habilitar CORS en el backend.
 > **Figura 8-2-1.**
