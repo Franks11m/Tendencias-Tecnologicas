@@ -2,165 +2,124 @@
 
 
 ## 1. Título  
-**Despliegue de una Aplicación Web en Contenedores usando Nginx y Docker**
+**Automatización del despliegue de una aplicación backend con Docker y Docker Compose, incluyendo PostgreSQL y pgAdmin**
 
 ## 2. Tiempo de duración  
-**240 minutos**  
+**Aproximadamente 180 minutos (3 horas) fueron utilizados para completar la práctica, incluyendo configuración, construcción de imágenes y despliegue.
+**  
 
 ## 3. Fundamentos
 
-Para comprender esta práctica es fundamental entender los principios de la **virtualización ligera mediante contenedores** y cómo se puede utilizar **Docker** para aislar y desplegar aplicaciones. A diferencia de las máquinas virtuales tradicionales, los contenedores no requieren un sistema operativo completo por instancia, lo cual los hace más eficientes.
+Esta práctica se basa en el uso de tecnologías de contenedores para automatizar el despliegue de aplicaciones backend y bases de datos. Docker es una plataforma que permite empaquetar aplicaciones junto con todas sus dependencias en contenedores ligeros y portables. Esto facilita la replicación del entorno de desarrollo y producción, asegurando consistencia en su comportamiento.
 
-Docker permite empaquetar aplicaciones junto con todas sus dependencias dentro de una imagen. Estas imágenes se ejecutan como contenedores, los cuales son instancias aisladas que se ejecutan sobre el mismo sistema operativo del host. En este ejercicio, se usa **Node.js** como entorno de desarrollo para construir una aplicación frontend, y **Nginx** como servidor web para servir el contenido estático generado.
+Docker Compose es una herramienta que permite definir y ejecutar aplicaciones multi-contenedor mediante archivos YAML, simplificando la orquestación y el manejo de servicios interdependientes como bases de datos y paneles de administración.
 
-Nginx, por su parte, es un servidor web de alto rendimiento y ampliamente utilizado en entornos de producción. Su configuración es sencilla, y es ideal para servir archivos estáticos, hacer balanceo de carga, o actuar como proxy inverso.
+La base de datos PostgreSQL es un sistema de gestión de bases de datos relacional potente y ampliamente utilizado en entornos empresariales. PgAdmin es una interfaz gráfica web que facilita la administración y gestión visual de bases de datos PostgreSQL.
 
-La combinación de estas herramientas permite crear entornos reproducibles y fáciles de desplegar, ideales para entornos de desarrollo y producción.
+La técnica de multi-stage builds en Docker permite optimizar la construcción de imágenes, reduciendo el tamaño final al separar las fases de compilación y ejecución. Esto mejora la eficiencia en la automatización y el despliegue continuo.
 
-Además, se debe comprender el flujo de construcción de una imagen Docker:
-1. Uso del `Dockerfile` para definir instrucciones.
-2. Uso del comando `docker build` para generar la imagen.
-3. Uso de `docker run` para lanzar un contenedor.
-
-Todo esto se realiza desde la terminal o desde entornos como **Visual Studio Code**, con extensiones que permiten integrarse fácilmente con Docker Desktop.
----
+![Diagrama básico de contenedores Docker](https://docs.docker.com/engine/images/engine-overview.svg)  
 
 <div align="center">
   <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 111057.png" width="800" />
   <br>
-  Figura 1. Componentes del Docker.
+  Figura 1.  Arquitectura básica de contenedores Docker y servicios.
 </div>
 
+Los conceptos de redes y volúmenes en Docker garantizan la persistencia de datos y la comunicación entre servicios, evitando pérdidas de información y facilitando la escalabilidad de la aplicación.
 
- 
-## 4. Conocimientos previos
+En resumen, esta práctica integra conocimientos de virtualización ligera, gestión de bases de datos, desarrollo backend y automatización de infraestructura, fundamentales para el desarrollo moderno de software.
 
-- Uso de comandos básicos de Linux (`cd`, `ls`, `mkdir`, etc.)
-- Manejo básico del navegador web.
-- Conocimientos de HTML, CSS y JavaScript.
-- Entendimiento de cómo funciona un servidor web.
-- Conceptos básicos de redes y puertos.
-- Instalación y uso básico de Docker.
-- Edición de archivos con Visual Studio Code u otro editor.
+---
 
-## 5. Objetivos a alcanzar
+## 4. Conocimientos previos  
 
-- Implementar contenedores para el despliegue de una aplicación web.
-- Configurar Nginx como servidor web para una aplicación frontend.
-- Manipular archivos de configuración de Nginx.
-- Construir imágenes Docker usando un `Dockerfile`.
-- Desplegar la aplicación desde Visual Studio Code utilizando Docker Desktop.
+Para realizar esta práctica el estudiante necesita tener claro los siguientes temas:  
+- Comandos básicos de Linux (navegación, edición de archivos)  
+- Uso básico de Docker y Docker Compose  
+- Fundamentos de redes y puertos en aplicaciones web  
+- Conceptos de REST API y programación backend  
+- Manejo de navegadores para realizar pruebas de endpoints  
+- Conocimientos básicos de bases de datos relacionales (PostgreSQL)  
 
+## 5. Objetivos a alcanzar  
 
-## 6. Equipo necesario
+- Automatizar el despliegue de una aplicación backend con Docker y Docker Compose.  
+- Crear servicios para PostgreSQL y pgAdmin asegurando persistencia y conectividad.  
+- Construir una imagen optimizada para la aplicación backend con multi-stage builds.  
+- Configurar correctamente variables de entorno y conexiones entre contenedores.  
+- Verificar el funcionamiento de la API mediante pruebas de endpoints.  
 
-- Computadora con sistema operativo **Windows 10/11** con **WSL2** habilitado o **Linux**.
-- Docker Desktop instalado y funcionando correctamente.
-- Visual Studio Code con extensión de Docker instalada.
-- Conexión a Internet estable.
-- Cuenta en Docker Hub (opcional, para subir imágenes).
-- Navegador web (Google Chrome, Firefox, etc.).
+## 6. Equipo necesario  
 
-## 7. Material de apoyo
+- Computador con sistema operativo Windows, Linux o MacOS.  
+- Instalación de Docker y Docker Compose (versiones recientes).  
+- Editor de texto o IDE para modificar código fuente (por ejemplo, Visual Studio Code).  
+- Navegador web para acceder a pgAdmin y probar la API.  
+- Acceso a internet para descargar imágenes Docker y documentación.  
 
-- [Documentación oficial de Docker](https://docs.docker.com)
-- Repositorio del proyecto frontend a desplegar
-- [Guía de Informe](https://github.com/maguaman2/informe-tendencias)
-- Guía video colocado en la plataforma del Instituto: 
-- Guía de comandos básicos de Linux.
+## 7. Material de apoyo  
 
-## 8. Procedimiento
+- Documentación oficial de Docker: https://docs.docker.com/  
+- Documentación de PostgreSQL: https://www.postgresql.org/docs/  
+- Guía de la asignatura y material proporcionado por el profesor.  
+- Cheat sheet de comandos Linux.  
+- Repositorio base del proyecto: https://github.com/maguaman2/tendencias-mar22-security.git  
 
-**Paso 1:**  Verificar Docker instalado y funcionando
+## 8. Procedimiento  
 
-
-```bash
-docker info
-```
-
- **Paso 2:** Clonar el proyecto frontend y backend
-
-```bash
-GIT-HUB DESCKTOP
-```
-
-> **Figura 8-2-1.**
- <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 101529.png" alt="drawing" width="800"/>
- 
-> **Figura 8-2-2.**
- <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 101445.png" alt="drawing" width="800"/>
-
- 
-**Paso 3:** Crear el Dockerfile
-```bash
-# Etapa 1: Construcción
-FROM node:18 AS build
-
-WORKDIR /app
-
-COPY package*.json ./
-RUN npm install
-
-COPY . .
-
-RUN npm run build
-
-# Etapa 2: Servidor NGINX
-FROM nginx:stable-alpine
-
-COPY --from=build /app/dist /usr/share/nginx/html
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
-
-
-
-```
-
+**Paso 1:** Configurar docker-compose.yml con servicios para PostgreSQL, pgAdmin y la aplicación backend.  
 > **Figura 8-3-1.** 
  <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 113338.png" alt="drawing" width="800"/>
  
-**Paso 4:**  Construir la imagen
-```bash
-docker build -t suda-frontend .
-```
-
-> **Figura 8-4-1.** 
- <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 112637.png" alt="drawing" width="800"/>
-
-**Paso 5:** Ejecutar el contenedor
-```bash
-docker run -d -p 80:80 suda-frontend
-```
-> **Figura 8-5-1.** 
- <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 112655.png" alt="drawing" width="800"/>
-
-> **Figura 8-5-2.** 
- <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 113418.png" alt="drawing" width="800"/>
-
-
-**Paso 6:** Acceder desde el navegador
-```bash
-http://localhost:8080
-```
+**Paso 2:** Crear volúmenes y redes para asegurar persistencia y comunicación entre contenedores. 
+> **Figura 8-3-1.** 
+ <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 113338.png" alt="drawing" width="800"/>
  
-> **Figura 8-6-1.** 
- <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 112723.png" alt="drawing" width="800"/>
+**Paso 3:** Construir la imagen Docker de la aplicación backend con Dockerfile (incluyendo multi-stage build para optimización).  
+> **Figura 8-3-1.** 
+ <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 113338.png" alt="drawing" width="800"/>
+ 
+**Paso 4:** Levantar los contenedores con `docker-compose up --build -d`.  
+> **Figura 8-3-1.** 
+ <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 113338.png" alt="drawing" width="800"/>
+ 
+**Paso 5:** Acceder a pgAdmin para configurar la conexión a PostgreSQL (host: `db`, puerto: `5432`, usuario: `postgres`, contraseña: `S3cr3t`).  
+> **Figura 8-3-1.** 
+ <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 113338.png" alt="drawing" width="800"/>
+ 
+**Paso 6:** Probar los endpoints expuestos por la API backend, por ejemplo, `http://localhost:8081/users` para listar usuarios.  
+> **Figura 8-3-1.** 
+ <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 113338.png" alt="drawing" width="800"/>
+ 
+**Paso 7:** Verificar los logs y estado de los contenedores para asegurar correcto funcionamiento.
+> **Figura 8-3-1.** 
+ <img src="./../../Tools/Photos/2do-Semana-7/Captura de pantalla 2025-05-16 113338.png" alt="drawing" width="800"/>
+ 
 
-## 9. Resultados esperados
+![Diagrama de servicios y contenedores](https://user-images.githubusercontent.com/placeholder/docker-compose-diagram.png)  
+*Figura 8-1. Diagrama de servicios desplegados con Docker Compose.*
 
-Al finalizar la práctica, se obtuvieron los siguientes resultados:
+## 9. Resultados esperados  
 
-Se logró empaquetar y desplegar la aplicación web frontend utilizando contenedores Docker. La aplicación se sirvió de forma eficiente desde Nginx, confirmando el correcto funcionamiento del Dockerfile, el servidor y la configuración de red.
-Además, se resolvieron errores comunes relacionados con permisos, conexión al demonio de Docker y lentitud en la construcción.
+Al finalizar la práctica, se espera que los siguientes resultados sean evidentes:  
+- Contenedores de PostgreSQL, pgAdmin y backend corriendo sin errores.  
+- Persistencia de datos garantizada mediante volúmenes.  
+- Acceso a pgAdmin vía navegador y conexión exitosa a la base de datos.  
+- Endpoint `/users` respondiendo con una lista en formato JSON de usuarios almacenados en la base de datos.  
+- Imagen Docker optimizada y contenedores fácilmente replicables.  
 
-  
-  ## 🔊 Audio Explicativo de la practica.
-https://drive.google.com/file/d/1DORAk9nhrTca9psRohPginv9_Lqtlzts/view?usp=sharing
+Ejemplo de respuesta en navegador para `http://localhost:8081/users`:
 
-## 10. Bibliografía
-
-- Docker Inc. (s.f.). Docker Documentation. Recuperado de https://docs.docker.com/
-- González, F. (2023). Guía de implementación de entornos web con contenedores. Universidad Sudamericana.
-- dpage. (2024). phpMyAdmin documentation. Recuperado de https://www.phpmyadmin.net/docs/
+```json
+[
+  {
+    "id": 1,
+    "username": "jdoe",
+    "email": "jdoe@example.com",
+    "passwordHash": "3c59dc048e8850243be8079a5c74d079",
+    "isActive": "t",
+    "createdAt": "2025-06-02 05:04:05.766085"
+  },
+  ...
+]
