@@ -9,159 +9,149 @@
 
 ## 3. Fundamentos
 
-Esta práctica se basa en el uso de tecnologías de contenedores para automatizar el despliegue de aplicaciones backend y bases de datos. Docker es una plataforma que permite empaquetar aplicaciones junto con todas sus dependencias en contenedores ligeros y portables. Esto facilita la replicación del entorno de desarrollo y producción, asegurando consistencia en su comportamiento.
+La contenerización es una tecnología clave en el desarrollo moderno de software. Permite encapsular una aplicación y todas sus dependencias en un contenedor que puede ejecutarse de forma consistente en diferentes entornos. En esta práctica se emplea Docker para contenerizar una aplicación frontend construida con React, que consume datos desde una API REST construida con Express y conectada a una base de datos PostgreSQL. Todo esto se orquesta con Docker Compose.
 
-Docker Compose es una herramienta que permite definir y ejecutar aplicaciones multi-contenedor mediante archivos YAML, simplificando la orquestación y el manejo de servicios interdependientes como bases de datos y paneles de administración.
+Docker es una plataforma que automatiza el despliegue de aplicaciones dentro de contenedores de software. Un contenedor es una unidad estándar de software que empaqueta el código y todas sus dependencias. Docker Compose permite definir y correr aplicaciones con múltiples contenedores mediante un archivo YAML.
 
-La base de datos PostgreSQL es un sistema de gestión de bases de datos relacional potente y ampliamente utilizado en entornos empresariales. PgAdmin es una interfaz gráfica web que facilita la administración y gestión visual de bases de datos PostgreSQL.
+React es una biblioteca de JavaScript para construir interfaces de usuario. En esta práctica, el frontend utiliza React para renderizar una tabla con los datos de clientes obtenidos de la API. La API, por su parte, se construye con Node.js y Express, y expone una ruta para listar los clientes desde una base de datos PostgreSQL.
 
-La técnica de multi-stage builds en Docker permite optimizar la construcción de imágenes, reduciendo el tamaño final al separar las fases de compilación y ejecución. Esto mejora la eficiencia en la automatización y el despliegue continuo.
-
-<div align="center">
-  <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 005427.png" width="800" />
-  <br>
-  Figura 1.  Arquitectura básica de contenedores Docker y servicios.
-</div>
-
-Los conceptos de redes y volúmenes en Docker garantizan la persistencia de datos y la comunicación entre servicios, evitando pérdidas de información y facilitando la escalabilidad de la aplicación.
-
-En resumen, esta práctica integra conocimientos de virtualización ligera, gestión de bases de datos, desarrollo backend y automatización de infraestructura, fundamentales para el desarrollo moderno de software.
+El propósito de esta práctica es comprender el flujo de trabajo completo desde el desarrollo de los servicios hasta su despliegue en contenedores. Se refuerzan conocimientos sobre redes de contenedores, puertos, dependencias y comunicación entre servicios.
 
 ---
 
 ## 4. Conocimientos previos  
 
 Para realizar esta práctica el estudiante necesita tener claro los siguientes temas:  
-- Comandos básicos de Linux (navegación, edición de archivos)  
-- Uso básico de Docker y Docker Compose  
-- Fundamentos de redes y puertos en aplicaciones web  
-- Conceptos de REST API y programación backend  
-- Manejo de navegadores para realizar pruebas de endpoints  
-- Conocimientos básicos de bases de datos relacionales (PostgreSQL)  
+- Comandos Linux
+- Navegación en sistemas de archivos
+- Conceptos básicos de Docker
+- Fundamentos de React y Node.js
+- Uso de PostgreSQL
+- Lectura de logs y errores
 
 ## 5. Objetivos a alcanzar  
 
-- Automatizar el despliegue de una aplicación backend con Docker y Docker Compose.  
-- Crear servicios para PostgreSQL y pgAdmin asegurando persistencia y conectividad.  
-- Construir una imagen optimizada para la aplicación backend con multi-stage builds.  
-- Configurar correctamente variables de entorno y conexiones entre contenedores.  
-- Verificar el funcionamiento de la API mediante pruebas de endpoints.  
+- Implementar contenedores para frontend y backend con Docker
+- Orquestar los servicios con Docker Compose
+- Conectar una aplicación React a una API REST
+- Visualizar datos desde una base de datos PostgreSQL
+- Aplicar estilos modernos con Tailwind CSS
 
 ## 6. Equipo necesario  
 
-- Computador con sistema operativo Windows, Linux o MacOS.  
-- Instalación de Docker y Docker Compose (versiones recientes).  
-- Editor de texto o IDE para modificar código fuente (por ejemplo, Visual Studio Code).  
-- Navegador web para acceder a pgAdmin y probar la API.  
-- Acceso a internet para descargar imágenes Docker y documentación.  
+- Computador con Windows 10/11
+- Visual Studio Code
+- Docker Desktop
+- Node.js v18+
+- PostgreSQL v15 (contenedor)
+- Navegador web
 
 ## 7. Material de apoyo  
 
 - Documentación oficial de Docker: https://docs.docker.com/  
 - Documentación de PostgreSQL: https://www.postgresql.org/docs/  
 - Guía de la asignatura y material proporcionado por el profesor.  
-- Cheat sheet de comandos Linux.  
-- Repositorio base del proyecto: https://github.com/maguaman2/tendencias-mar22-security.git  
+- Repositorios y documentacion en clase
+- Documentación de React
 
 ## 8. Procedimiento  
 
-**Paso 1:** Clonar el repositorio base desde GitHub.
+**Paso 1:** Crear estructura de carpetas
 > **Figura 8-1-1.**
- <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-01 230732.png" alt="drawing" width="800"/>
+> Se crea una carpeta principal con dos subcarpetas: backend/ y frontend/, como proyectos independientes.
+ <img src="./../../Tools/Photos/2do-Semana-9/Captura de pantalla 2025-06-08 224106.png" alt="drawing" width="800"/>
+ <img src="./../../Tools/Photos/2do-Semana-9/Captura de pantalla 2025-06-09 003844.png" alt="drawing" width="800"/>
 
-**Paso 2:** Acceder al directorio del proyecto clonado.
+
+**Paso 2:**  Crear API REST en Express
 > **Figura 8-2-1.**
- <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-01 230732.png" alt="drawing" width="800"/>
+> Se configura un servidor con Node.js y Express, y se conectan rutas a una base de datos PostgreSQL.
+
+ <img src="./../../Tools/Photos/2do-Semana-9/Captura de pantalla 2025-06-08 224106.png" width="800"/>
+ <img src="./../../Tools/Photos/2do-Semana-9/Captura de pantalla 2025-06-08 224035.png" width="800"/>
 
 
-**Paso 3:** Crear y configurar el archivo `docker-compose.yml` con los servicios necesarios.
+**Paso 3:**  Crear archivo Dockerfile en backend
 > **Figura 8-3-1.**
- <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-01 233240.png" alt="drawing" width="800"/>
+> Se especifica una imagen base de Node.js, se copian archivos del backend y se ejecuta el proceso de build con TypeScript.
+ <img src="./../../Tools/Photos/2do-Semana-9/Captura de pantalla 2025-06-09 004820.png" alt="drawing" width="800"/>
 
 
-**Paso 4:** Definir las variables de entorno en un archivo `.env`.
+**Paso 4:** Crear docker-compose.yml para backend
 > **Figura 8-4-1.**
- <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-01 232921.png" alt="drawing" width="800"/>
+> Se define una red de contenedores incluyendo servicios db, pgadmin y backend, con sus variables de entorno y volúmenes.
+ <img src="./../../Tools/Photos/2do-Semana-9/Captura de pantalla 2025-06-08 224123.png" alt="drawing" width="800"/>
  
 
-**Paso 5:** Crear un `Dockerfile` con estrategia de construcción multi-stage para la aplicación backend.
+**Paso 5:** Crear frontend con React + TypeScript
 > **Figura 8-5-1.**
- <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-01 235132.png" alt="drawing" width="800"/>
+> Se utiliza create-react-app con plantilla TypeScript para generar el proyecto.
+ <img src="./../../Tools/Photos/2do-Semana-9/Captura de pantalla 2025-06-08 230821.png" alt="drawing" width="800"/>
  
 
-**Paso 6:** Construir e iniciar los contenedores usando Docker Compose.
-> **Figura 8-6-1.**
- <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-01 235647.png" alt="drawing" width="800"/>
- 
-> **Figura 8-6-2.**
- <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 000423.png" alt="drawing" width="800"/>
+**Paso 6:** Diseñar componente de tabla ClientesTable.tsx
 
-**Paso 7:** Acceder a pgAdmin desde el navegador y crear un nuevo servidor con los datos de conexión.
+**Paso 7:** Crear docker-compose.yml para frontend
 > **Figura 8-7-1.**
- <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 005716.png" alt="drawing" width="800"/>
+> Se define el contenedor para la aplicación React y se expone el puerto 3000.
+ <img src="./../../Tools/Photos/2do-Semana-9/Captura de pantalla 2025-06-09 003831.png" alt="drawing" width="800"/>
  
 > **Figura 8-7-2.**
- <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 001104.png" alt="drawing" width="800"/>
+> Se crea dockerfile
+ <img src="./../../Tools/Photos/2do-Semana-9/Captura de pantalla 2025-06-09 003844.png" alt="drawing" width="800"/>
+
  
-> **Figura 8-7-3.**
- <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 001125.png" alt="drawing" width="800"/>
- 
-> **Figura 8-7-4.**
- <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 001135.png" alt="drawing" width="800"/>
- 
-**Paso 8:** Verificar la conexión de pgAdmin a PostgreSQL.
+**Paso 8:**  Levantar servicios
+```
+docker compose up --build -d
+```
 > **Figura 8-8-1.**
- <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 001831.png" alt="drawing" width="800"/>
+ <img src="./../../Tools/Photos/2do-Semana-9/Captura de pantalla 2025-06-09 003859.png" alt="drawing" width="800"/>
 
 
-**Paso 9:** Comprobar que la aplicación backend se conecta correctamente a la base de datos.
-> **Figura 9-9-1.**
- <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 001250.png" alt="drawing" width="800"/>
+**Paso 9:** Verificar comunicación entre contenedores
+> **Figura 9-9-1.** BACKEND
+ <img src="./../../Tools/Photos/2do-Semana-9/Captura de pantalla 2025-06-08 223956.png" alt="drawing" width="800"/>
  
-
-**Paso 10:** Crear y configurar el archivo `CorsConfig.kt` para habilitar CORS en el backend.
-> **Figura 8-10-1.**
- <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 001935.png" alt="drawing" width="800"/>
+ > **Figura 9-9-2.** FRONTEND
+ <img src="./../../Tools/Photos/2do-Semana-9/Captura de pantalla 2025-06-09 000846.png" alt="drawing" width="800"/>
  
-
-**Paso 11:** Probar el endpoint `/users` desde el navegador o herramienta de prueba de APIs.
-> **Figura 8-11-1.**
- <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 004720.png" alt="drawing" width="800"/>
-
-> **Figura 8-11-2.**
-  <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 012126.png" alt="drawing" width="800"/>
-
-
-## 9. Resultados esperados  
+ 
+## 9. Resultados esperados
 
 Al finalizar la práctica, se espera que los siguientes resultados sean evidentes:  
 - Contenedores de PostgreSQL, pgAdmin y backend corriendo sin errores.  
 - Persistencia de datos garantizada mediante volúmenes.  
 - Acceso a pgAdmin vía navegador y conexión exitosa a la base de datos.  
-- Endpoint `/users` respondiendo con una lista en formato JSON de usuarios almacenados en la base de datos.  
+- Endpoint `/api/clientes` respondiendo con una lista en formato JSON de clientes almacenados en la base de datos.  
 - Imagen Docker optimizada y contenedores fácilmente replicables.  
 
-Ejemplo de respuesta en navegador para `http://localhost:8081/users`:
+Ejemplo de respuesta en navegador para `http://localhost:5000/api/clientes`:
 
 ```json
 [
   {
     "id": 1,
-    "username": "jdoe",
-    "email": "jdoe@example.com",
-    "passwordHash": "3c59dc048e8850243be8079a5c74d079",
-    "isActive": "t",
-    "createdAt": "2025-06-02 05:04:05.766085"
+    "nombre": "Franks Gonzalez",
+    "direccion": "El salado Mayancela",
+    "telefono": "0959906392",
+    "email": "gonzafranks777@gmail.com"
   },
   ...
 ]
+
 ```
+> **Figura 8-10-1.**
+ <img src="./../../Tools/Photos/2do-Semana-9/Captura de pantalla 2025-06-08 224011.png" alt="drawing" width="800"/>
 
   ## 🔊 Audio Explicativo de la practica.
-https://drive.google.com/file/d/10UL3iFNJ-jRgvvaaBtAelhagdXRXs97M/view?usp=sharing
+https://drive.google.com/file/d/12510_U2kNw7Rpc80HEWK43ArxXppr53h/view?usp=sharing
 
 ## 10. Bibliografía
 
-- Docker Inc. (s.f.). Docker Documentation. Recuperado de https://docs.docker.com/
-- González, F. (2023). Guía de implementación de entornos web con contenedores. Universidad Sudamericana.
-- dpage. (2024). phpMyAdmin documentation. Recuperado de https://www.phpmyadmin.net/docs/
+- Docker Inc. (2024). Docker Documentation. https://docs.docker.com/
+- Facebook. (2024). React Docs. https://reactjs.org/
+- Tailwind Labs. (2024). Tailwind CSS Documentation. https://tailwindcss.com/docs
+- Node.js Foundation. (2024). Node.js Documentation. https://nodejs.org/
+- PostgreSQL Global Development Group. (2024). PostgreSQL Documentation. https://www.postgresql.org/
+
