@@ -2,10 +2,10 @@
 
 
 ## 1. Título  
-**Automatización del despliegue de una aplicación backend con Docker y Docker Compose, incluyendo PostgreSQL y pgAdmin**
+**Contenerización de Aplicación Web: React + API REST con Docker Compose**
 
 ## 2. Tiempo de duración  
-**Aproximadamente 180 minutos (3 horas) fueron utilizados para completar la práctica, incluyendo configuración, construcción de imágenes y despliegue.**  
+**Aproximadamente 180 minutos**
 
 ## 3. Fundamentos
 
