@@ -22,20 +22,22 @@ La comunicación entre servicios está gestionada por una red interna de Docker,
 El siguiente diagrama representa la arquitectura general de la solución:
 
 <div align="center">
-  <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 005427.png" width="800" />
+  <img src="./../../Tools/Photos/2do-Semana-10/Captura de pantalla 2025-06-12 223158.png" width="400" />
   <br>
   Figura 1. Diagrama de arquitectura con contenedores
 </div>
 
 <div align="center">
-  <img src="./../../Tools/Photos/2do-Semana-8/Captura de pantalla 2025-06-02 005427.png" width="800" />
+  <img src="./../../Tools/Photos/2do-Semana-10/Captura de pantalla 2025-06-12 223210.png" width="400" />
   <br>
   Figura 2. Flujo de despliegue con Docker y Nginx
 </div>
 
-Este modelo permite desplegar un sistema completo en producción con tan solo ejecutar el comando:
+---
 
 ```bash
+# Este modelo permite desplegar un sistema completo en producción con tan solo ejecutar el comando:
+
 docker-compose up --build
 ```
 ---
@@ -93,24 +95,24 @@ PROYECT_CARNICERIA/
 ```
 > **Figura 8-1-1.**
 > Organizar el proyecto con las carpetas:
- <img src="./../../Tools/Photos/2do-Semana-9/Captura de pantalla 2025-06-08 224106.png" alt="drawing" width="800"/>
+ <img src="./../../Tools/Photos/2do-Semana-10/Captura de pantalla 2025-06-12 223959.png" alt="drawing" width="400"/>
 
 
 **Paso 2:**  Configurar el Dockerfile del frontend
 > **Figura 8-2-1.**
 > Utilizar una imagen **node:18-alpine** para construir la app, y luego una imagen **nginx:stable-alpine** para servirla.
- <img src="./../../Tools/Photos/2do-Semana-9/Captura de pantalla 2025-06-08 224106.png" width="800"/>
+ <img src="./../../Tools/Photos/2do-Semana-10/Captura de pantalla 2025-06-12 224147.png" width="800"/>
 
 
 **Paso 3:**  Configurar el backend con Express
 > **Figura 8-3-1.**
 > Asegurar que el backend esté preparado para recibir peticiones desde el frontend con CORS configurado.
- <img src="./../../Tools/Photos/2do-Semana-9/Captura de pantalla 2025-06-09 004820.png" alt="drawing" width="800"/>
+ <img src="./../../Tools/Photos/2do-Semana-10/Captura de pantalla 2025-06-12 224304.png" alt="drawing" width="800"/>
 
 
 **Paso 4:** Configurar el archivo docker-compose.yml
 > **Figura 8-4-1.**
- <img src="./../../Tools/Photos/2do-Semana-9/Captura de pantalla 2025-06-08 224123.png" alt="drawing" width="800"/>
+ <img src="./../../Tools/Photos/2do-Semana-10/Captura de pantalla 2025-06-12 224415.png" alt="drawing" width="800"/>
  
 
 **Paso 5:** Ejecutar el proyecto
@@ -118,17 +120,23 @@ PROYECT_CARNICERIA/
 docker-compose up --build
 ```
 > **Figura 8-5-1.**
-> Se utiliza create-react-app con plantilla TypeScript para generar el proyecto.
- <img src="./../../Tools/Photos/2do-Semana-9/Captura de pantalla 2025-06-08 230821.png" alt="drawing" width="800"/>
+ <img src="./../../Tools/Photos/2do-Semana-10/Captura de pantalla 2025-06-12 224559.png" alt="drawing" width="800"/>
  
 
 **Paso 6:** Verificar resultados
 > **Figura 8-6-1.**
 > Abrir en el navegador **http://localhost:3000** para visualizar el frontend desplegado por Nginx.
- <img src="./../../Tools/Photos/2do-Semana-9/Captura de pantalla 2025-06-09 003831.png" alt="drawing" width="800"/>
+ <img src="./../../Tools/Photos/2do-Semana-10/Captura de pantalla 2025-06-12 225755.png" alt="drawing" width="800"/>
+ 
+> **Figura 8-6-2.**
+ <img src="./../../Tools/Photos/2do-Semana-10/Captura de pantalla 2025-06-12 225838.png" alt="drawing" width="800"/>
+ 
+> **Figura 8-6-3.**
 > Estructura de servicios corriendo.
-  <img src="./../../Tools/Photos/2do-Semana-9/Captura de pantalla 2025-06-09 003844.png" alt="drawing" width="800"/>
-  <img src="./../../Tools/Photos/2do-Semana-9/Captura de pantalla 2025-06-09 003844.png" alt="drawing" width="800"/>
+  <img src="./../../Tools/Photos/2do-Semana-10/Captura de pantalla 2025-06-12 224824.png" alt="drawing" width="800"/>
+  
+> **Figura 8-6-4.**
+  <img src="./../../Tools/Photos/2do-Semana-10/Captura de pantalla 2025-06-12 224618.png" alt="drawing" width="800"/>
 
 
  
@@ -144,7 +152,7 @@ Entre los logros verificados están:
 
 
   ## 🔊 Audio Explicativo de la practica.
-https://drive.google.com/file/d/12510_U2kNw7Rpc80HEWK43ArxXppr53h/view?usp=sharing
+https://drive.google.com/file/d/130vniyp-lyZTDa9CT1sCE7c0071x4jSZ/view?usp=sharing
 
 ## 10. Bibliografía
 
